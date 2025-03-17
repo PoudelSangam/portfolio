@@ -1,15 +1,18 @@
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const education = [
   {
     school: "Sagarmatha Engineering College",
+    logo: "/assets/sagarmatha-logo.png",
     degree: "Degree of Computer Engineering",
     period: "2021 - Present",
     location: "Kathmandu, Nepal"
   },
   {
     school: "Bal Uddhar Secondary School",
+    logo: "/assets/bal-uddhar-logo.png",
     degree: "+2 in Computer Engineering",
     period: "2019 - 2021",
     location: "Kathmandu, Nepal",
@@ -17,6 +20,7 @@ const education = [
   },
   {
     school: "Tribeni Ma Vi",
+    logo: "/assets/tribeni-logo.png",
     degree: "Secondary Education Examination (TSEE)",
     period: "2019",
     location: "Dhankuta, Nepal",
@@ -40,15 +44,23 @@ export default function Education() {
             >
               <Card>
                 <CardHeader>
-                  <CardTitle>{edu.school}</CardTitle>
-                  <CardDescription>
-                    <div className="grid gap-1">
-                      <p>{edu.degree}</p>
-                      <p>{edu.period}</p>
-                      <p>{edu.location}</p>
-                      {edu.gpa && <p className="font-medium">{edu.gpa}</p>}
+                  <div className="flex items-center gap-4">
+                    <Avatar className="w-12 h-12">
+                      <AvatarImage src={edu.logo} alt={edu.school} />
+                      <AvatarFallback>{edu.school[0]}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <CardTitle>{edu.school}</CardTitle>
+                      <CardDescription>
+                        <div className="grid gap-1">
+                          <p>{edu.degree}</p>
+                          <p>{edu.period}</p>
+                          <p>{edu.location}</p>
+                          {edu.gpa && <p className="font-medium">{edu.gpa}</p>}
+                        </div>
+                      </CardDescription>
                     </div>
-                  </CardDescription>
+                  </div>
                 </CardHeader>
               </Card>
             </motion.div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Link } from "wouter";
 import ThemeToggle from "./ThemeToggle";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const links = [
   { href: "#about", label: "About" },
@@ -20,7 +21,13 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/">
-          <a className="text-xl font-bold">Sangam Poudel</a>
+          <a className="flex items-center gap-2">
+            <Avatar>
+              <AvatarImage src="/assets/profile.jpg" alt="Sangam Poudel" />
+              <AvatarFallback>SP</AvatarFallback>
+            </Avatar>
+            <span className="text-xl font-bold">Sangam Poudel</span>
+          </a>
         </Link>
 
         {/* Desktop Navigation */}

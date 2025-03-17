@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Hero() {
   return (
@@ -10,6 +11,17 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8"
+        >
+          <Avatar className="w-32 h-32 mx-auto">
+            <AvatarImage src="/assets/profile.jpg" alt="Sangam Poudel" />
+            <AvatarFallback className="text-4xl">SP</AvatarFallback>
+          </Avatar>
+        </motion.div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Hi, I'm Sangam Poudel
         </h1>

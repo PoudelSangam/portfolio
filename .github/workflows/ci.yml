@@ -1,21 +1,30 @@
-
-name: CI
+name: Deploy React to cPanel Subdomain
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main  # Change if your default branch is different
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: npm install
-      - name: Build application
-        run: npm run build
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.CPANEL_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 136.243.112.224 >> ~/.ssh/known_hosts
+
+      - name: Install Dependencies & Build React App
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy via rsync to Subdomain Directory
+        run: |
+          rsync -avz --delete ./build/ poudels2@136.243.112.224:/home/poudels2/public_html/portfolio.poudelsangam.com.np/

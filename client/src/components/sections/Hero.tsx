@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -5,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-primary/5 to-background px-4 py-20 md:flex-row">
+    <section className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-primary/5 to-background px-4 py-20">
       <div className="absolute inset-0 grid grid-cols-4 gap-4 p-4 opacity-10 pointer-events-none">
         {[...Array(16)].map((_, i) => (
           <div key={i} className="h-full w-full border border-primary/20" />
@@ -15,7 +16,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center relative z-10 md:w-1/2 md:text-left"
+        className="text-center relative z-10"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -24,7 +25,7 @@ export default function Hero() {
           className="mb-8 relative"
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-full blur opacity-30"></div>
-          <Avatar className="w-32 h-32 mx-auto border-4 border-background md:mx-0">
+          <Avatar className="w-32 h-32 mx-auto border-4 border-background">
             <AvatarImage src="/assets/profile.jpg" alt="Sangam Poudel" />
             <AvatarFallback className="text-4xl">SP</AvatarFallback>
           </Avatar>
@@ -49,7 +50,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="flex justify-center gap-4 md:justify-start"
+          className="flex justify-center gap-4"
         >
           <Button size="lg" asChild>
             <a href="#projects">View Projects</a>
@@ -66,19 +67,6 @@ export default function Hero() {
         >
           <ArrowDown className="h-8 w-8 text-muted-foreground" />
         </motion.a>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="relative hidden md:block md:w-1/2"
-      >
-        <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-2xl blur-2xl"></div>
-        <img
-          src="/assets/profile.jpg"
-          alt="Sangam Poudel"
-          className="w-full max-w-md rounded-2xl shadow-2xl relative z-10"
-        />
       </motion.div>
     </section>
   );
